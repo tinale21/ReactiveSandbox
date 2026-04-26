@@ -2,6 +2,9 @@ import { useState } from 'react'
 import './DetailView.css'
 import { asset } from '../../utils'
 import SofaOverlay from './SofaOverlay'
+import CoffeeTableOverlay from './CoffeeTableOverlay'
+import RedCouch1Overlay from './RedCouch1Overlay'
+import RedCouch2Overlay from './RedCouch2Overlay'
 
 export default function DetailView({
   selectedBuilding,
@@ -47,14 +50,40 @@ export default function DetailView({
                 height: obj.hitArea.height,
               }}
             >
-              <SofaOverlay
-                materialColor={matColor}
-                isSelected={isSelected}
-                isHovered={isHovered}
-                onClick={() => onSelectObject(obj.id)}
-                onMouseEnter={() => setHoveredObject(obj.id)}
-                onMouseLeave={() => setHoveredObject(null)}
-              />
+              {obj.overlayType === 'sofa' && (
+                <SofaOverlay
+                  materialColor={matColor}
+                  isSelected={isSelected}
+                  isHovered={isHovered}
+                  onClick={() => onSelectObject(obj.id)}
+                  onMouseEnter={() => setHoveredObject(obj.id)}
+                  onMouseLeave={() => setHoveredObject(null)}
+                />
+              )}
+              {obj.overlayType === 'coffee-table' && (
+                <CoffeeTableOverlay
+                  isHovered={isHovered}
+                  onClick={() => onSelectObject(obj.id)}
+                  onMouseEnter={() => setHoveredObject(obj.id)}
+                  onMouseLeave={() => setHoveredObject(null)}
+                />
+              )}
+              {obj.overlayType === 'red-couch-1' && (
+                <RedCouch1Overlay
+                  isHovered={isHovered}
+                  onClick={() => onSelectObject(obj.id)}
+                  onMouseEnter={() => setHoveredObject(obj.id)}
+                  onMouseLeave={() => setHoveredObject(null)}
+                />
+              )}
+              {obj.overlayType === 'red-couch-2' && (
+                <RedCouch2Overlay
+                  isHovered={isHovered}
+                  onClick={() => onSelectObject(obj.id)}
+                  onMouseEnter={() => setHoveredObject(obj.id)}
+                  onMouseLeave={() => setHoveredObject(null)}
+                />
+              )}
             </div>
           )
         })}

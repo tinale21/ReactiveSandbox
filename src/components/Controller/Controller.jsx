@@ -7,7 +7,6 @@ export default function Controller({
   onToggleCollapse,
   selectedObject,
   selectedMaterial,
-  onSelectMaterial,
 }) {
   if (!visible) return <aside className="controller controller--hidden" />
 
@@ -23,48 +22,30 @@ export default function Controller({
         {!collapsed && (
           <>
             {selectedObject ? (
-              <div className="object-panel">
+              <div className="object-panel" style={selectedObject.panelOffset ? { marginTop: selectedObject.panelOffset } : undefined}>
                 <div className="object-preview">
                   <img
-                    src={asset(activeMat?.preview ?? selectedObject.materials[0].preview)}
+                    src={asset(activeMat?.preview ?? selectedObject.preview ?? selectedObject.materials[0]?.preview)}
                     alt={selectedObject.name}
+                    style={selectedObject.previewScale ? { transform: `scale(${selectedObject.previewScale})` } : undefined}
                   />
                 </div>
 
                 <div className="object-dims">
                   <div className="dim-row">
                     <span className="dim-label">Width</span>
-                    <span className="dim-value">{selectedObject.width}</span>
+                    <span className="dim-value">{selectedObject.width} m</span>
                   </div>
                   <div className="dim-row">
                     <span className="dim-label">Depth</span>
-                    <span className="dim-value">{selectedObject.depth}</span>
+                    <span className="dim-value">{selectedObject.depth} m</span>
                   </div>
                   <div className="dim-row">
                     <span className="dim-label">Height</span>
-                    <span className="dim-value">{selectedObject.height}</span>
+                    <span className="dim-value">{selectedObject.height} m</span>
                   </div>
                 </div>
 
-                <div className="aspect-row">
-                  <div className="checkbox-blue">✓</div>
-                  <span>Maintain Aspect Ratio</span>
-                </div>
-
-                <p className="materials-label">Materials</p>
-                <div className="swatches">
-                  {selectedObject.materials.map(mat => (
-                    <button
-                      key={mat.id}
-                      className={`swatch ${selectedMaterial === mat.id ? 'swatch--active' : ''}`}
-                      onClick={() => onSelectMaterial(mat.id)}
-                      aria-label={mat.label}
-                      title={mat.label}
-                    >
-                      <img src={asset(mat.swatchImage)} alt={mat.label} />
-                    </button>
-                  ))}
-                </div>
               </div>
             ) : (
               <div className="controller-empty" />

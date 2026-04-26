@@ -96,7 +96,6 @@ export default function App() {
         onToggleCollapse={() => setRightCollapsed(v => !v)}
         selectedObject={selectedObjectData}
         selectedMaterial={selectedMaterial}
-        onSelectMaterial={handleSelectMaterial}
       />
 
       {showBlueprintModal && (
