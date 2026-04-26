@@ -3,8 +3,11 @@ import './DetailView.css'
 import { asset } from '../../utils'
 import SofaOverlay from './SofaOverlay'
 import CoffeeTableOverlay from './CoffeeTableOverlay'
+import KitchenOverlay from './KitchenOverlay'
+import DiningTableOverlay from './DiningTableOverlay'
 import RedCouch1Overlay from './RedCouch1Overlay'
 import RedCouch2Overlay from './RedCouch2Overlay'
+import MarbleTableOverlay from './MarbleTableOverlay'
 
 export default function DetailView({
   selectedBuilding,
@@ -50,10 +53,34 @@ export default function DetailView({
                 height: obj.hitArea.height,
               }}
             >
+              {obj.overlayType === 'marble-table' && (
+                <MarbleTableOverlay
+                  isHovered={isHovered}
+                  onClick={() => onSelectObject(obj.id)}
+                  onMouseEnter={() => setHoveredObject(obj.id)}
+                  onMouseLeave={() => setHoveredObject(null)}
+                />
+              )}
               {obj.overlayType === 'sofa' && (
                 <SofaOverlay
                   materialColor={matColor}
                   isSelected={isSelected}
+                  isHovered={isHovered}
+                  onClick={() => onSelectObject(obj.id)}
+                  onMouseEnter={() => setHoveredObject(obj.id)}
+                  onMouseLeave={() => setHoveredObject(null)}
+                />
+              )}
+              {obj.overlayType === 'kitchen' && (
+                <KitchenOverlay
+                  isHovered={isHovered}
+                  onClick={() => onSelectObject(obj.id)}
+                  onMouseEnter={() => setHoveredObject(obj.id)}
+                  onMouseLeave={() => setHoveredObject(null)}
+                />
+              )}
+              {obj.overlayType === 'dining-table' && (
+                <DiningTableOverlay
                   isHovered={isHovered}
                   onClick={() => onSelectObject(obj.id)}
                   onMouseEnter={() => setHoveredObject(obj.id)}
