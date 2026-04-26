@@ -1,0 +1,35 @@
+.detail-view {
+  background: #ffffff;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  position: relative;
+}
+
+.detail-view--empty {
+  /* blank canvas intentional */
+}
+
+/* ── Floor plan ── */
+.floorplan-wrapper {
+  position: relative;
+  display: inline-block;
+  line-height: 0;
+  max-height: calc(100vh - var(--nav-h) - 20px);
+}
+
+.floorplan-img {
+  max-height: calc(100vh - var(--nav-h) - 20px);
+  max-width: 100%;
+  width: auto;
+  height: auto;
+  display: block;
+  user-select: none;
+}
+
+/* ── Object hit areas ── */
+.object-hit {
+  position: absolute;
+}

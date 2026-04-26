@@ -1,17 +1,64 @@
-export default function DetailView({ building, selectedObject, onSelectObject }) {
-  if (!building) {
-    return (
-      <main className="detail-view detail-view--empty">
-        <p>Select a building to begin.</p>
-      </main>
-    )
+import { useState } from 'react'
+import './DetailView.css'
+import { asset } from '../../utils'
+import SofaOverlay from './SofaOverlay'
+
+export default function DetailView({
+  selectedBuilding,
+  isFloorView,
+  selectedFloor,
+  selectedObject,
+  selectedMaterial,
+  floorData,
+  onSelectObject,
+}) {
+  const [hoveredObject, setHoveredObject] = useState(null)
+
+  if (!isFloorView || !floorData || selectedFloor !== 'ground') {
+    return <main className="detail-view detail-view--empty" />
   }
 
   return (
     <main className="detail-view">
-      <h2>{building.name}</h2>
-      <p>{building.type} · {building.sqft} sq ft</p>
-      {/* Render view and blueprint will go here */}
+      <div className="floorplan-wrapper">
+        <img
+          className="floorplan-img"
+          src={asset(floorData.floorPlan)}
+          alt="Ground floor plan"
+          draggable={false}
+        />
+
+        {floorData.objects.map(obj => {
+          const isHovered = hoveredObject === obj.id
+          const isSelected = selectedObject === obj.id
+          const matColor = isSelected
+            ? (obj.materials.find(m => m.id === selectedMaterial)?.blendColor ?? 'transparent')
+            : 'transparent'
+
+          return (
+            <div
+              key={obj.id}
+              className="object-hit"
+              style={{
+                position: 'absolute',
+                top: obj.hitArea.top,
+                left: obj.hitArea.left,
+                width: obj.hitArea.width,
+                height: obj.hitArea.height,
+              }}
+            >
+              <SofaOverlay
+                materialColor={matColor}
+                isSelected={isSelected}
+                isHovered={isHovered}
+                onClick={() => onSelectObject(obj.id)}
+                onMouseEnter={() => setHoveredObject(obj.id)}
+                onMouseLeave={() => setHoveredObject(null)}
+              />
+            </div>
+          )
+        })}
+      </div>
     </main>
   )
 }
