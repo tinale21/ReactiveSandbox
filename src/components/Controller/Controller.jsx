@@ -31,7 +31,7 @@ export default function Controller({
                   />
                 </div>
 
-                <div className="object-dims">
+                <div className="object-dims" style={selectedObject.dimsOffset ? { marginTop: selectedObject.dimsOffset } : undefined}>
                   <div className="dim-row">
                     <span className="dim-label">Width</span>
                     <span className="dim-value">{selectedObject.width} m</span>

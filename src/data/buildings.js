@@ -265,7 +265,8 @@ export const buildings = [
           overlayType: 'deck-table',
           preview: 'assets/objects/deck-table.png',
           previewScale: 0.85,
-          panelOffset: 0,
+          panelOffset: -48,
+          dimsOffset: -25,
           materials: [],
         },
         {
@@ -278,8 +279,8 @@ export const buildings = [
           overlayType: 'deck-chair-1',
           panelId: 'deck-chair',
           preview: 'assets/objects/deck-chair.png',
-          previewScale: 0.85,
-          panelOffset: 0,
+          previewScale: 0.8,
+          panelOffset: -11,
           materials: [],
         },
         {
@@ -292,8 +293,8 @@ export const buildings = [
           overlayType: 'deck-chair-2',
           panelId: 'deck-chair',
           preview: 'assets/objects/deck-chair.png',
-          previewScale: 0.85,
-          panelOffset: 0,
+          previewScale: 0.8,
+          panelOffset: -11,
           materials: [],
         },
         {
@@ -306,8 +307,8 @@ export const buildings = [
           overlayType: 'deck-chair-3',
           panelId: 'deck-chair',
           preview: 'assets/objects/deck-chair.png',
-          previewScale: 0.85,
-          panelOffset: 0,
+          previewScale: 0.8,
+          panelOffset: -11,
           materials: [],
         },
         {
@@ -320,8 +321,8 @@ export const buildings = [
           overlayType: 'deck-chair-4',
           panelId: 'deck-chair',
           preview: 'assets/objects/deck-chair.png',
-          previewScale: 0.85,
-          panelOffset: 0,
+          previewScale: 0.8,
+          panelOffset: -11,
           materials: [],
         },
         {
