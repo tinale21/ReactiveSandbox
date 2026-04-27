@@ -19,7 +19,7 @@ export default function App() {
   const [showBlueprintModal, setShowBlueprintModal] = useState(false)
 
   const isFloorView = !!selectedBuilding && viewMode === 'rendered'
-  const showRightPanel = isFloorView
+  const showRightPanel = isFloorView && !!selectedObject
 
   function handleSelectProperty(building) {
     setSelectedBuilding(building)
@@ -39,6 +39,7 @@ export default function App() {
   function handleSelectObject(objectId) {
     setSelectedObject(objectId)
     setSelectedMaterial('beige')
+    setRightCollapsed(false)
   }
 
   function handleSelectMaterial(matId) {

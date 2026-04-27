@@ -8,6 +8,10 @@ import DiningTableOverlay from './DiningTableOverlay'
 import RedCouch1Overlay from './RedCouch1Overlay'
 import RedCouch2Overlay from './RedCouch2Overlay'
 import MarbleTableOverlay from './MarbleTableOverlay'
+import TVOverlay from './TVOverlay'
+import KingBedOverlay from './KingBedOverlay'
+import KingBedDesk1Overlay from './KingBedDesk1Overlay'
+import KingBedDesk2Overlay from './KingBedDesk2Overlay'
 
 export default function DetailView({
   selectedBuilding,
@@ -53,6 +57,14 @@ export default function DetailView({
                 height: obj.hitArea.height,
               }}
             >
+              {obj.overlayType === 'tv' && (
+                <TVOverlay
+                  isHovered={isHovered}
+                  onClick={() => onSelectObject(obj.id)}
+                  onMouseEnter={() => setHoveredObject(obj.id)}
+                  onMouseLeave={() => setHoveredObject(null)}
+                />
+              )}
               {obj.overlayType === 'marble-table' && (
                 <MarbleTableOverlay
                   isHovered={isHovered}
@@ -89,6 +101,30 @@ export default function DetailView({
               )}
               {obj.overlayType === 'coffee-table' && (
                 <CoffeeTableOverlay
+                  isHovered={isHovered}
+                  onClick={() => onSelectObject(obj.id)}
+                  onMouseEnter={() => setHoveredObject(obj.id)}
+                  onMouseLeave={() => setHoveredObject(null)}
+                />
+              )}
+              {obj.overlayType === 'king-bed-desk-1' && (
+                <KingBedDesk1Overlay
+                  isHovered={isHovered}
+                  onClick={() => onSelectObject(obj.id)}
+                  onMouseEnter={() => setHoveredObject(obj.id)}
+                  onMouseLeave={() => setHoveredObject(null)}
+                />
+              )}
+              {obj.overlayType === 'king-bed-desk-2' && (
+                <KingBedDesk2Overlay
+                  isHovered={isHovered}
+                  onClick={() => onSelectObject(obj.id)}
+                  onMouseEnter={() => setHoveredObject(obj.id)}
+                  onMouseLeave={() => setHoveredObject(null)}
+                />
+              )}
+              {obj.overlayType === 'king-bed' && (
+                <KingBedOverlay
                   isHovered={isHovered}
                   onClick={() => onSelectObject(obj.id)}
                   onMouseEnter={() => setHoveredObject(obj.id)}
