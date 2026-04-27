@@ -18,6 +18,12 @@ import TwinBed1Overlay from './TwinBed1Overlay'
 import TwinBed2Overlay from './TwinBed2Overlay'
 import TwinBedroomTableOverlay from './TwinBedroomTableOverlay'
 import TwinClosetOverlay from './TwinClosetOverlay'
+import StoveOverlay from './StoveOverlay'
+import DeckTableOverlay from './DeckTableOverlay'
+import DeckChair1Overlay from './DeckChair1Overlay'
+import DeckChair2Overlay from './DeckChair2Overlay'
+import DeckChair3Overlay from './DeckChair3Overlay'
+import DeckChair4Overlay from './DeckChair4Overlay'
 
 export default function DetailView({
   selectedBuilding,
@@ -187,6 +193,54 @@ export default function DetailView({
               )}
               {obj.overlayType === 'couch-plant' && (
                 <CouchPlantOverlay
+                  isHovered={isHovered}
+                  onClick={() => onSelectObject(obj.id)}
+                  onMouseEnter={() => setHoveredObject(obj.id)}
+                  onMouseLeave={() => setHoveredObject(null)}
+                />
+              )}
+              {obj.overlayType === 'deck-chair-1' && (
+                <DeckChair1Overlay
+                  isHovered={isHovered}
+                  onClick={() => onSelectObject(obj.id)}
+                  onMouseEnter={() => setHoveredObject(obj.id)}
+                  onMouseLeave={() => setHoveredObject(null)}
+                />
+              )}
+              {obj.overlayType === 'deck-chair-2' && (
+                <DeckChair2Overlay
+                  isHovered={isHovered}
+                  onClick={() => onSelectObject(obj.id)}
+                  onMouseEnter={() => setHoveredObject(obj.id)}
+                  onMouseLeave={() => setHoveredObject(null)}
+                />
+              )}
+              {obj.overlayType === 'deck-chair-3' && (
+                <DeckChair3Overlay
+                  isHovered={isHovered}
+                  onClick={() => onSelectObject(obj.id)}
+                  onMouseEnter={() => setHoveredObject(obj.id)}
+                  onMouseLeave={() => setHoveredObject(null)}
+                />
+              )}
+              {obj.overlayType === 'deck-chair-4' && (
+                <DeckChair4Overlay
+                  isHovered={isHovered}
+                  onClick={() => onSelectObject(obj.id)}
+                  onMouseEnter={() => setHoveredObject(obj.id)}
+                  onMouseLeave={() => setHoveredObject(null)}
+                />
+              )}
+              {obj.overlayType === 'deck-table' && (
+                <DeckTableOverlay
+                  isHovered={isHovered}
+                  onClick={() => onSelectObject(obj.id)}
+                  onMouseEnter={() => setHoveredObject(obj.id)}
+                  onMouseLeave={() => setHoveredObject(null)}
+                />
+              )}
+              {obj.overlayType === 'stove' && (
+                <StoveOverlay
                   isHovered={isHovered}
                   onClick={() => onSelectObject(obj.id)}
                   onMouseEnter={() => setHoveredObject(obj.id)}
