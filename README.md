@@ -14,6 +14,39 @@ An interior design explorer built as a three-panel reactive system. Users select
 
 ---
 
+## State Machine Diagram
+
+```mermaid
+stateDiagram-v2
+    direction LR
+
+    [*] --> Idle : app loads
+
+    state Browser {
+        Idle --> BuildingSelected : user selects building
+        BuildingSelected --> BuildingSelected : user selects different building
+    }
+
+    state DetailView {
+        BuildingSelected --> RenderView : click Rendered
+        BuildingSelected --> BlueprintView : click Blueprint
+        RenderView --> BlueprintView : toggle view
+        BlueprintView --> RenderView : toggle view
+        BlueprintView --> ObjectSelected : click floor plan object
+        ObjectSelected --> ObjectSelected : click different object
+        ObjectSelected --> BlueprintView : click outside object
+    }
+
+    state Controller {
+        ObjectSelected --> PanelVisible : object selected
+        PanelVisible --> PanelCollapsed : collapse panel
+        PanelCollapsed --> PanelVisible : expand panel
+        PanelVisible --> PanelHidden : no object selected
+    }
+```
+
+---
+
 ## Panels
 
 | Panel | Role |
