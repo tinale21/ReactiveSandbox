@@ -68,11 +68,55 @@ Assignment docs and course reference are in `claude/docs/`.
 
 _Moments where I rejected or reverted AI output._
 
-1. **2026-04-26 — Deck table height increase (reverted).** I asked to increase the deck table hitArea height by 23%. AI set it to 40%, which visually displaced the SVG overlay from the floor plan. I asked to revert it, and AI restored it to 17%. The lesson: hitArea height changes shift the SVG's coordinate mapping — large jumps break the alignment between the overlay and the underlying floor plan image.
+1. **2026-04-26 — Left panel button font revert.**
+   - **What AI produced:** Changed the floor level buttons (Blueprint, Rendered, Ground Floor, etc.) to Inter Medium font as directed.
+   - **Why rejected:** After seeing it rendered, the previous style looked better and the change wasn't an improvement.
+   - **What I did instead:** Asked AI to revert to the prior font style.
 
-2. **2026-04-26 — Bedroom plant preview scale (revised).** AI initially set the bedroom plant's panel image scale to 0.9 when I asked it to scale down. After seeing it, I directed it to 0.85 instead. Small difference, but I made the visual call rather than accepting the first value.
+2. **2026-04-26 — Sofa hover masking approach revert.**
+   - **What AI produced:** An approach to mask the hover state to the sofa shape using the floor plan PNG — but the overlay didn't align to the sofa's actual position on screen.
+   - **Why rejected:** The overlay was visually incorrect and not clipped to the sofa shape.
+   - **What I did instead:** Asked AI to revert, then provided the full floor plan SVG and then the individual Sofa.svg so the path coordinates could be extracted accurately.
 
-3. **2026-04-26 — Deck table ghost copy (caught and fixed).** After I asked AI to trim the left side of the deck table's hitArea to stop it overlapping the chairs, it shifted the hitArea div without updating the viewBox to match. This caused the table SVG paths to render offset from their actual floor plan position — appearing as a duplicate ghost on screen. I caught it and directed AI to realign the viewBox with the hitArea and reorder the objects so chairs render on top instead.
+3. **2026-04-26 — Coffee table panel image scale revert.**
+   - **What AI produced:** Scaled the coffee table's right-panel image to match the sofa's panel image size, which caused the sofa's panel image to be cut off when selected.
+   - **Why rejected:** Changing the coffee table scale modified shared CSS that also affected the sofa preview — a side effect I didn't want.
+   - **What I did instead:** Reverted and then asked AI to scale only the coffee table panel image down using the object-specific `previewScale` field.
+
+4. **2026-04-26 — Rug overlay approach revert and removal.**
+   - **What AI produced:** A rug overlay that tried to clip away the sofa and coffee table hover states in its area, which caused the sofa hover to break entirely in that region.
+   - **Why rejected:** The clipping made the rug overlay look like there was nothing there and disrupted neighboring overlays.
+   - **What I did instead:** Reverted the clip approach, then decided to remove the rug as a clickable object entirely to preserve the sofa interaction.
+
+5. **2026-04-26 — Kitchen overlay wrong object.**
+   - **What AI produced:** Wired the kitchen overlay to the twin beds location instead of the kitchen counter to the right of the dining table.
+   - **Why rejected:** It was the wrong object entirely — the overlay appeared on the opposite side of the floor plan from the kitchen.
+   - **What I did instead:** Told AI the correct location and provided the kitchen SVG again; AI re-matched the paths to the correct floor plan region.
+
+6. **2026-04-26 — King bed overlay wrong wall.**
+   - **What AI produced:** Placed the king bed overlay on the wrong wall — near the kitchen side rather than the opposite wall of the bedroom.
+   - **Why rejected:** Visually confirmed it was sitting on top of the wrong area of the floor plan.
+   - **What I did instead:** Told AI "It should be on the opposite wall of where the kitchen is"; AI re-matched to the correct location.
+
+7. **2026-04-26 — Deck table height increase (reverted).**
+   - **What AI produced:** When I asked to increase the deck table hitArea height by 23%, AI set it to 40% instead.
+   - **Why rejected:** The larger height displaced the SVG overlay from its floor plan position — hitArea changes shift the coordinate mapping, so a large jump breaks alignment.
+   - **What I did instead:** Asked AI to revert; it restored the height to 17%.
+
+8. **2026-04-26 — Deck table ghost copy.**
+   - **What AI produced:** After I asked AI to trim 15px and then 10px from the left of the deck table hitArea, it moved the div position without updating the SVG viewBox to match. The SVG paths still mapped to the original coordinate origin, rendering offset from the floor plan — appearing as a ghost duplicate.
+   - **Why rejected:** The deck table appeared twice on screen: once correctly on the floor plan, and once as an offset ghost.
+   - **What I did instead:** Caught the misalignment and directed AI to restore the hitArea to match the viewBox, then reorder the buildings.js array so chairs render on top of the table and intercept clicks first.
+
+9. **2026-04-26 — Bedroom plant preview scale revision.**
+   - **What AI produced:** Set the bedroom plant panel image scale to 0.9 when I asked it to scale down.
+   - **Why rejected:** 0.9 was still too large relative to the panel space.
+   - **What I did instead:** Directed it to 0.85. Small difference, but I made the visual call rather than accepting the first value.
+
+10. **2026-04-27 — Deck chair preview scale revision.**
+    - **What AI produced:** Set the deck chair panel image scale to 0.85 as directed.
+    - **Why rejected:** After seeing it, 0.85 was still slightly too large in the panel.
+    - **What I did instead:** Changed it to 0.8 on review.
 
 ---
 
