@@ -20,6 +20,13 @@ import TwinBedroomTableOverlay from './TwinBedroomTableOverlay'
 import TwinClosetOverlay from './TwinClosetOverlay'
 import StoveOverlay from './StoveOverlay'
 import DeckTableOverlay from './DeckTableOverlay'
+import BathtubOverlay from './BathtubOverlay'
+import BathroomSinkOverlay from './BathroomSinkOverlay'
+import LaundryMachineOverlay from './LaundryMachineOverlay'
+import LaundryBasketOverlay from './LaundryBasketOverlay'
+import StairsOverlay from './StairsOverlay'
+import LoungeChair1Overlay from './LoungeChair1Overlay'
+import LoungeChair2Overlay from './LoungeChair2Overlay'
 import DeckChair1Overlay from './DeckChair1Overlay'
 import DeckChair2Overlay from './DeckChair2Overlay'
 import DeckChair3Overlay from './DeckChair3Overlay'
@@ -193,6 +200,62 @@ export default function DetailView({
               )}
               {obj.overlayType === 'couch-plant' && (
                 <CouchPlantOverlay
+                  isHovered={isHovered}
+                  onClick={() => onSelectObject(obj.id)}
+                  onMouseEnter={() => setHoveredObject(obj.id)}
+                  onMouseLeave={() => setHoveredObject(null)}
+                />
+              )}
+              {obj.overlayType === 'stairs' && (
+                <StairsOverlay
+                  isHovered={isHovered}
+                  onClick={() => onSelectObject(obj.id)}
+                  onMouseEnter={() => setHoveredObject(obj.id)}
+                  onMouseLeave={() => setHoveredObject(null)}
+                />
+              )}
+              {obj.overlayType === 'laundry-basket' && (
+                <LaundryBasketOverlay
+                  isHovered={isHovered}
+                  onClick={() => onSelectObject(obj.id)}
+                  onMouseEnter={() => setHoveredObject(obj.id)}
+                  onMouseLeave={() => setHoveredObject(null)}
+                />
+              )}
+              {obj.overlayType === 'laundry-machine' && (
+                <LaundryMachineOverlay
+                  isHovered={isHovered}
+                  onClick={() => onSelectObject(obj.id)}
+                  onMouseEnter={() => setHoveredObject(obj.id)}
+                  onMouseLeave={() => setHoveredObject(null)}
+                />
+              )}
+              {obj.overlayType === 'bathroom-sink' && (
+                <BathroomSinkOverlay
+                  isHovered={isHovered}
+                  onClick={() => onSelectObject(obj.id)}
+                  onMouseEnter={() => setHoveredObject(obj.id)}
+                  onMouseLeave={() => setHoveredObject(null)}
+                />
+              )}
+              {obj.overlayType === 'bathtub' && (
+                <BathtubOverlay
+                  isHovered={isHovered}
+                  onClick={() => onSelectObject(obj.id)}
+                  onMouseEnter={() => setHoveredObject(obj.id)}
+                  onMouseLeave={() => setHoveredObject(null)}
+                />
+              )}
+              {obj.overlayType === 'lounge-chair-1' && (
+                <LoungeChair1Overlay
+                  isHovered={isHovered}
+                  onClick={() => onSelectObject(obj.id)}
+                  onMouseEnter={() => setHoveredObject(obj.id)}
+                  onMouseLeave={() => setHoveredObject(null)}
+                />
+              )}
+              {obj.overlayType === 'lounge-chair-2' && (
+                <LoungeChair2Overlay
                   isHovered={isHovered}
                   onClick={() => onSelectObject(obj.id)}
                   onMouseEnter={() => setHoveredObject(obj.id)}
