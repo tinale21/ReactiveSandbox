@@ -180,7 +180,7 @@ export const buildings = [
           width: 2.44,
           depth: 0.61,
           height: 2.13,
-          hitArea: { top: '59.5%', left: '69.4%', width: '28.2%', height: '7.9%' },
+          hitArea: { top: '59.8%', left: '78.1%', width: '19.4%', height: '7.8%' },
           overlayType: 'twin-closet',
           preview: 'assets/objects/twin-closet.png',
           previewScale: 0.85,
