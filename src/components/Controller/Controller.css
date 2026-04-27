@@ -6,7 +6,7 @@
 }
 
 .controller--hidden {
-  background: transparent;
+  background: #ffffff;
   border: none;
 }
 
@@ -42,7 +42,7 @@
 
 .controller--collapsed .ctrl-collapse-btn {
   align-self: center;
-  padding: 10px 0 8px;
+  padding: 0 0 8px;
 }
 
 /* ── Object panel ── */

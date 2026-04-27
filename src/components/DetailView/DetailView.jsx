@@ -10,8 +10,14 @@ import RedCouch2Overlay from './RedCouch2Overlay'
 import MarbleTableOverlay from './MarbleTableOverlay'
 import TVOverlay from './TVOverlay'
 import KingBedOverlay from './KingBedOverlay'
+import BedroomPlantOverlay from './BedroomPlantOverlay'
 import KingBedDesk1Overlay from './KingBedDesk1Overlay'
 import KingBedDesk2Overlay from './KingBedDesk2Overlay'
+import CouchPlantOverlay from './CouchPlantOverlay'
+import TwinBed1Overlay from './TwinBed1Overlay'
+import TwinBed2Overlay from './TwinBed2Overlay'
+import TwinBedroomTableOverlay from './TwinBedroomTableOverlay'
+import TwinClosetOverlay from './TwinClosetOverlay'
 
 export default function DetailView({
   selectedBuilding,
@@ -107,6 +113,14 @@ export default function DetailView({
                   onMouseLeave={() => setHoveredObject(null)}
                 />
               )}
+              {obj.overlayType === 'bedroom-plant' && (
+                <BedroomPlantOverlay
+                  isHovered={isHovered}
+                  onClick={() => onSelectObject(obj.id)}
+                  onMouseEnter={() => setHoveredObject(obj.id)}
+                  onMouseLeave={() => setHoveredObject(null)}
+                />
+              )}
               {obj.overlayType === 'king-bed-desk-1' && (
                 <KingBedDesk1Overlay
                   isHovered={isHovered}
@@ -133,6 +147,46 @@ export default function DetailView({
               )}
               {obj.overlayType === 'red-couch-1' && (
                 <RedCouch1Overlay
+                  isHovered={isHovered}
+                  onClick={() => onSelectObject(obj.id)}
+                  onMouseEnter={() => setHoveredObject(obj.id)}
+                  onMouseLeave={() => setHoveredObject(null)}
+                />
+              )}
+              {obj.overlayType === 'twin-closet' && (
+                <TwinClosetOverlay
+                  isHovered={isHovered}
+                  onClick={() => onSelectObject(obj.id)}
+                  onMouseEnter={() => setHoveredObject(obj.id)}
+                  onMouseLeave={() => setHoveredObject(null)}
+                />
+              )}
+              {obj.overlayType === 'twin-bedroom-table' && (
+                <TwinBedroomTableOverlay
+                  isHovered={isHovered}
+                  onClick={() => onSelectObject(obj.id)}
+                  onMouseEnter={() => setHoveredObject(obj.id)}
+                  onMouseLeave={() => setHoveredObject(null)}
+                />
+              )}
+              {obj.overlayType === 'twin-bed-1' && (
+                <TwinBed1Overlay
+                  isHovered={isHovered}
+                  onClick={() => onSelectObject(obj.id)}
+                  onMouseEnter={() => setHoveredObject(obj.id)}
+                  onMouseLeave={() => setHoveredObject(null)}
+                />
+              )}
+              {obj.overlayType === 'twin-bed-2' && (
+                <TwinBed2Overlay
+                  isHovered={isHovered}
+                  onClick={() => onSelectObject(obj.id)}
+                  onMouseEnter={() => setHoveredObject(obj.id)}
+                  onMouseLeave={() => setHoveredObject(null)}
+                />
+              )}
+              {obj.overlayType === 'couch-plant' && (
+                <CouchPlantOverlay
                   isHovered={isHovered}
                   onClick={() => onSelectObject(obj.id)}
                   onMouseEnter={() => setHoveredObject(obj.id)}
