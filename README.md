@@ -157,8 +157,22 @@ _Moments where I rejected or reverted AI output._
 
 _Answered before submission._
 
-1. **Can I defend this?**
-2. **Is this mine?**
-3. **Did I verify?**
-4. **Would I teach this?**
-5. **Is my documentation honest?**
+**1. Can I defend this?**
+
+I can defend this because each design decision connects back to my original goal of creating an interior design software that guides users through property selection, floor plan viewing, and interacting within the space. Keeping in mind the project brief, I designed the left side panel to function as the property search and floor plan options while the right side panel is meant to support object information display without overcrowding the main floor plan. I used familiar and universal UI patterns such as collapsible side panels, selected and hover states to help users orient themselves to the site quickly.
+
+**2. Is this mine?**
+
+This is mine because the concept, user flow, and visual design were thought out and created through my own interpretation and design process. I made my own decisions about the brand, layout, interaction model, and final interface. This project is a reflection of my own decision and work as everything from the color palette, button appearance, and typography were selected and curated based on my vision. Not only that but all the interactions from hover states, user flows, and component changes were directed by me.
+
+**3. Did I verify?**
+
+I did verify my project by consistently reviewing the user flows and ensuring that each interaction worked and made sense based on my design intent. I made sure that users were able to move from looking up a home, selecting a property, choosing a floor plan, and view the objects within the space. I also checked that all hover states and selected states, side panel interactions, and clickable components matched the way I intended the prototype to work.
+
+**4. Would I teach this?**
+
+I believe I have enough knowledge about this project to teach it to someone else, especially having gone through the trials and errors myself. I could teach about how the interface is structured, why the panels are organized and designed the way they are, and how the user moves through the main flow. I could also explain how AI was used as a supporting tool for coding and building, while the design direction and decision remained mine.
+
+**5. Is my documentation honest?**
+
+My documentation is honest because it accurately shows how the project developed, including what I created myself and where I used AI for support. In my AI Direction Log, I would document the prompts I gave, the changes I accepted, and the parts I had to revise. I also make it clear that the interface was designed in Figma by me, while AI was used to help execute the design. This keeps the process transparent and shows that AI supported my workflow instead of replacing my creative decisions.
