@@ -14,7 +14,7 @@ An interior design explorer built as a three-panel reactive system. Users select
 
 ---
 
-## State Machine Diagram
+## State Mermaid Diagram
 
 ```mermaid
 stateDiagram-v2
