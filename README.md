@@ -14,6 +14,58 @@ An interior design explorer built as a three-panel reactive system. Users select
 
 ---
 
+## Design Intent
+
+Nest & Co. is an interior design tool that allows users to browse real estate properties, explore floor plans at each level, and interact with individual objects within the space. The goal was to create a software experience that feels spatial and informative — guiding a user from property discovery all the way into the details of a room's furniture and materials.
+
+The three-panel layout reflects that journey directly: the left panel handles search and navigation, the center panel presents the space visually, and the right panel surfaces object-level information on demand. Collapsible side panels keep the floor plan as the focal point, with supporting information available but never intrusive.
+
+The visual identity — warm neutrals, Inria Serif typography, subtle hover states — was designed to feel like the brand of a real estate and interior design company: calm, considered, and trustworthy.
+
+---
+
+## Figma Screens
+
+The following screens represent the full design intent created in Figma before development began.
+
+**Screen 1 — Empty state:** App loads with the left panel open and search available. No property selected, center and right panels are blank.
+
+![Screen 1](claude/docs/screens/screen-01.png)
+
+**Screen 2 — Property selected:** A property (4380 Parsons Drive) is selected. The left panel shows the address, property photo, and view mode buttons (Blueprint, Rendered Floor Plan).
+
+![Screen 2](claude/docs/screens/screen-02.png)
+
+**Screen 3 — Floor level expanded:** All floor level options appear (Lower Level, Ground Floor, Upper Floor, Loft). Rendered Floor Plan is the active view mode.
+
+![Screen 3](claude/docs/screens/screen-03.png)
+
+**Screen 4 — Floor plan visible, no object selected:** The rendered ground floor plan fills the center panel. The right panel is hidden until an object is clicked.
+
+![Screen 4](claude/docs/screens/screen-04.png)
+
+**Screen 5 — Object selected (sofa, beige):** Clicking the sofa opens the right panel with a preview image, dimensions (Width, Depth, Height), and material swatches.
+
+![Screen 5](claude/docs/screens/screen-05.png)
+
+**Screen 6 — Material variant (charcoal):** The sofa material is switched to charcoal. The floor plan reflects the change via a color overlay on the object.
+
+![Screen 6](claude/docs/screens/screen-06.png)
+
+**Screen 7 — Material variant (sage):** Sofa switched to sage green material.
+
+![Screen 7](claude/docs/screens/screen-07.png)
+
+**Screen 8 — Material variant (navy):** Sofa switched to navy material.
+
+![Screen 8](claude/docs/screens/screen-08.png)
+
+**Screen 9 — Material variant (red):** Sofa switched to deep red material.
+
+![Screen 9](claude/docs/screens/screen-09.png)
+
+---
+
 ## State Mermaid Diagram
 
 ```mermaid
