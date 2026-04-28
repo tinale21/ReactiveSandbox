@@ -60,9 +60,9 @@ export default function DetailView({
         {floorData.objects.map(obj => {
           const isHovered = hoveredObject === obj.id
           const isSelected = selectedObject === obj.id
-          const matColor = isSelected
-            ? (obj.materials.find(m => m.id === selectedMaterial)?.blendColor ?? 'transparent')
-            : 'transparent'
+          const mat = isSelected ? obj.materials.find(m => m.id === selectedMaterial) : null
+          const matColor = mat?.blendColor ?? null
+          const matFillColor = mat?.swatchColor ?? null
 
           return (
             <div
@@ -96,6 +96,15 @@ export default function DetailView({
                 <SofaOverlay
                   materialColor={matColor}
                   isSelected={isSelected}
+                  isHovered={isHovered}
+                  onClick={() => onSelectObject(obj.id)}
+                  onMouseEnter={() => setHoveredObject(obj.id)}
+                  onMouseLeave={() => setHoveredObject(null)}
+                />
+              )}
+              {obj.overlayType === 'king-bed' && (
+                <KingBedOverlay
+                  materialColor={matColor}
                   isHovered={isHovered}
                   onClick={() => onSelectObject(obj.id)}
                   onMouseEnter={() => setHoveredObject(obj.id)}
@@ -150,16 +159,9 @@ export default function DetailView({
                   onMouseLeave={() => setHoveredObject(null)}
                 />
               )}
-              {obj.overlayType === 'king-bed' && (
-                <KingBedOverlay
-                  isHovered={isHovered}
-                  onClick={() => onSelectObject(obj.id)}
-                  onMouseEnter={() => setHoveredObject(obj.id)}
-                  onMouseLeave={() => setHoveredObject(null)}
-                />
-              )}
               {obj.overlayType === 'red-couch-1' && (
                 <RedCouch1Overlay
+                  materialColor={matColor}
                   isHovered={isHovered}
                   onClick={() => onSelectObject(obj.id)}
                   onMouseEnter={() => setHoveredObject(obj.id)}
@@ -312,6 +314,7 @@ export default function DetailView({
               )}
               {obj.overlayType === 'red-couch-2' && (
                 <RedCouch2Overlay
+                  materialColor={matColor}
                   isHovered={isHovered}
                   onClick={() => onSelectObject(obj.id)}
                   onMouseEnter={() => setHoveredObject(obj.id)}

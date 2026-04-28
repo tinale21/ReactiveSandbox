@@ -19,7 +19,7 @@ const PATHS = [
 
 const VIEW_BOX = "126 346 59 61"
 
-export default function RedCouch2Overlay({ isHovered, onClick, onMouseEnter, onMouseLeave }) {
+export default function RedCouch2Overlay({ isHovered, onClick, onMouseEnter, onMouseLeave, materialColor }) {
   return (
     <svg
       viewBox={VIEW_BOX}
@@ -36,6 +36,13 @@ export default function RedCouch2Overlay({ isHovered, onClick, onMouseEnter, onM
       </defs>
 
       <rect x="126" y="346" width="59" height="61" fill="transparent" clipPath="url(#rc2-clip)" />
+
+      {materialColor && (
+        <rect x="126" y="346" width="59" height="61"
+          fill={materialColor} fillOpacity={0.55}
+          clipPath="url(#rc2-clip)"
+          style={{ mixBlendMode: 'multiply' }} />
+      )}
 
       {isHovered && (
         <rect x="126" y="346" width="59" height="61"
