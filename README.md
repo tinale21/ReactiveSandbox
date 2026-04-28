@@ -16,11 +16,61 @@ An interior design explorer built as a three-panel reactive system. Users select
 
 ## Design Intent
 
-Nest & Co. is an interior design tool that allows users to browse real estate properties, explore floor plans at each level, and interact with individual objects within the space. The goal was to create a software experience that feels spatial and informative — guiding a user from property discovery all the way into the details of a room's furniture and materials.
+**Design Intent for Nest & Co. Interior Design Software**
 
-The three-panel layout reflects that journey directly: the left panel handles search and navigation, the center panel presents the space visually, and the right panel surfaces object-level information on demand. Collapsible side panels keep the floor plan as the focal point, with supporting information available but never intrusive.
+I am building an interior design software called Nest & Co. The interface has already been fully designed in Figma, so the main priority is to recreate the visuals exactly as they appear in the Figma screens. Do not redesign the interface, change the layout, adjust styling, or reinterpret the visual direction. The goal is to build the site to match the Figma design as closely as possible, while adding the interactions and functional states needed for the prototype.
 
-The visual identity — warm neutrals, Inria Serif typography, subtle hover states — was designed to feel like the brand of a real estate and interior design company: calm, considered, and trustworthy.
+The overall experience should feel like a professional interior design and floor planning tool. Users should be able to search for a property, select a home, choose between blueprint or rendered floor plan views, select a floor level, and interact with furniture or objects inside the rendered floor plan.
+
+**Main Build Priority**
+
+Please focus on interaction development rather than visual redesign. The Figma screens should be treated as the source of truth for: layout, spacing, typography, colors, button styles, panel sizes, image placement, icon placement, hover and selected states, and left and right sidebar structure.
+
+Only create additional screens or states when they are needed to complete the interaction flow, and make sure they follow the exact same visual style already shown in the Figma designs.
+
+**User Flow and Interactions**
+
+**1. Initial Entry Screen**
+
+When users first enter the site, they should see the first screen only. This includes the top navigation bar, the left sidebar, and the search field. The main canvas area should remain blank until the user selects a property. When the user clicks into the search field, a dropdown should automatically appear showing recent searches and suggested searches. These results should feel lightweight and match the visual style of the current sidebar. Once the user selects a house or building from the search suggestions, the interface should move to the property selection screen.
+
+**2. Property Selected Screen**
+
+After selecting a property, the second screen should appear. This screen shows the selected property, the preview image, and two main viewing options: Blueprint and Rendered Floor Plan. The user should also be able to favorite the property by clicking the heart icon. When the heart is clicked, it should turn red to clearly indicate that the property has been saved to favorites. Clicking it again should remove the favorite state and return it to the original outline style. Both the Blueprint and Rendered Floor Plan buttons should have hover states. On hover, the button should slightly tint or darken before the user fully clicks. The hover state should feel subtle and match the interface style.
+
+**3. Blueprint Beta Pop-Up**
+
+For now, only the rendered floor plan flow has been designed. If the user clicks the Blueprint button, a centered pop-up should appear saying: "Blueprint is currently in beta mode and is not available yet." When the pop-up appears, the background should become slightly blurred or dimmed to reduce visual overload and keep the user focused on the message. The pop-up should include an "X" close button. When the user closes the pop-up, the interface should return to its normal state.
+
+**4. Rendered Floor Plan Selection**
+
+When the user clicks Rendered Floor Plan, the third screen should appear. This screen reveals floor level options in the left sidebar. The available floor will depend on the property/house the user selects. The selected floor button should match the selected state shown in the Figma design. For this prototype, I have only designed the Ground Floor view for the example house. Please build that flow exactly as shown. For any additional floor levels that need to exist as placeholder interactions, they should follow the same visual style. If clicked, they can either show a placeholder message or remain inactive, but the interface should not visually break. The floor level buttons should use the same hover interaction as the Blueprint and Rendered Floor Plan buttons.
+
+**5. Ground Floor Rendered View**
+
+When the user selects Ground Floor, the fourth screen should appear. The rendered floor plan should appear centered in the main content area. At this stage, a right-side panel should also appear. This right panel is used for object information and customization once an object is selected. The left and right side panels both include double-arrow icons. These icons should function as minimize and expand controls, similar to Adobe software panels. When clicked, the panel should collapse toward the edge of the screen. Clicking again should expand it back to the full panel view.
+
+**6. Object Hover Interaction on Rendered Floor Plan**
+
+Users should be able to hover over furniture and objects within the rendered floor plan. When hovering over an object, that object should slightly change opacity to indicate that it is interactive. This will require creating masks or clickable regions over each object in the rendered floor plan image. The hover areas should align as closely as possible to the objects in the image. Objects that should eventually be interactive include furniture, decor, plants, lamps, rugs, beds, tables, chairs, and other visible objects in the rendered floor plan. The hover effect should be subtle and should not disrupt the overall visual style.
+
+**7. Object Selection and Right Panel Display**
+
+When the user clicks on an object in the floor plan, the fifth screen should appear. The right-side panel should update to show details for the selected object. I have demonstrated this flow using the couch. The right panel should include: a 3D rendered image of the selected object, width, depth, height, a "Maintain Aspect Ratio" checkbox, and material options shown as circular swatches. When the user selects a different material, the 3D preview image should update, and the object in the floor plan should visually update to match the selected material/color. For example, the couch can change between white, black, blue, green, and red material options. The floor plan should update accordingly, as shown in the Figma screens. I will provide 3D rendered image assets for each object. Please use those assets rather than generating new ones. For each object, estimate realistic width, depth, and height values based on the type of furniture or decor item.
+
+**Object Data Expectations**
+
+Each interactive object should have its own data set, including: object name, preview image, width, depth, height, available material options, corresponding image or visual state for each material, and clickable/masked area on the floor plan. For now, the couch flow is the most important and should be built first. Other objects should follow the same structure so the system can scale later.
+
+**Important Notes**
+
+- Do not redesign the interface.
+- Do not change the visual style.
+- Do not change the layout unless it is required for responsive behavior.
+- Do not create a different UI system.
+- Use the Figma screens as the exact visual reference.
+- Focus on making the prototype interactive and functional.
+- Any new states should match the current Nest & Co. visual language.
 
 ---
 
