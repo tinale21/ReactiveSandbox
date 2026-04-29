@@ -23,15 +23,18 @@ export default function Controller({
             {selectedObject ? (
               <div className="object-panel" style={selectedObject.panelOffset ? { marginTop: selectedObject.panelOffset } : undefined}>
                 <div className="object-preview">
-                  <img
-                    src={asset(
-                      selectedMaterial
-                        ? (selectedObject.materials?.find(m => m.id === selectedMaterial)?.preview ?? selectedObject.preview)
-                        : selectedObject.preview
-                    )}
-                    alt={selectedObject.name}
-                    style={selectedObject.previewScale ? { transform: `scale(${selectedObject.previewScale})` } : undefined}
-                  />
+                  {(() => {
+                    const activeMat = selectedMaterial ? selectedObject.materials?.find(m => m.id === selectedMaterial) : null
+                    const previewSrc = activeMat?.preview ?? selectedObject.preview
+                    const scale = activeMat?.previewScale ?? selectedObject.previewScale
+                    return (
+                      <img
+                        src={asset(previewSrc)}
+                        alt={selectedObject.name}
+                        style={scale ? { transform: `scale(${scale})` } : undefined}
+                      />
+                    )
+                  })()}
                 </div>
 
                 <div className="object-dims" style={selectedObject.dimsOffset ? { marginTop: selectedObject.dimsOffset } : undefined}>
