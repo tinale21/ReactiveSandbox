@@ -7,10 +7,9 @@ export default function Controller({
   onToggleCollapse,
   selectedObject,
   selectedMaterial,
+  onSelectMaterial,
 }) {
   if (!visible) return <aside className="controller controller--hidden" />
-
-  const activeMat = selectedObject?.materials.find(m => m.id === selectedMaterial)
 
   return (
     <aside className={`controller ${collapsed ? 'controller--collapsed' : ''}`}>
@@ -25,7 +24,7 @@ export default function Controller({
               <div className="object-panel" style={selectedObject.panelOffset ? { marginTop: selectedObject.panelOffset } : undefined}>
                 <div className="object-preview">
                   <img
-                    src={asset(activeMat?.preview ?? selectedObject.preview ?? selectedObject.materials[0]?.preview)}
+                    src={asset(selectedObject.preview)}
                     alt={selectedObject.name}
                     style={selectedObject.previewScale ? { transform: `scale(${selectedObject.previewScale})` } : undefined}
                   />
@@ -45,6 +44,29 @@ export default function Controller({
                     <span className="dim-value">{selectedObject.height} m</span>
                   </div>
                 </div>
+
+                {selectedObject.materials?.length > 0 && (
+                  <div className="material-section">
+                    <span className="material-label">Material</span>
+                    <div className="material-swatches">
+                      {selectedObject.materials.map(mat => (
+                        <button
+                          key={mat.id}
+                          className={`material-swatch ${selectedMaterial === mat.id ? 'material-swatch--active' : ''}`}
+                          style={{ background: mat.swatchColor }}
+                          onClick={() => onSelectMaterial(mat.id)}
+                          title={mat.label}
+                          aria-label={mat.label}
+                        />
+                      ))}
+                    </div>
+                    {selectedMaterial && (
+                      <span className="material-selected-label">
+                        {selectedObject.materials.find(m => m.id === selectedMaterial)?.label}
+                      </span>
+                    )}
+                  </div>
+                )}
 
               </div>
             ) : (

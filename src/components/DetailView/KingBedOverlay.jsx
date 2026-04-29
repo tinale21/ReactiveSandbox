@@ -22,7 +22,7 @@ const PATHS = [
 
 const VIEW_BOX = "291 175 106 96"
 
-export default function KingBedOverlay({ isHovered, onClick, onMouseEnter, onMouseLeave }) {
+export default function KingBedOverlay({ materialColor, isHovered, onClick, onMouseEnter, onMouseLeave }) {
   return (
     <svg
       viewBox={VIEW_BOX}
@@ -39,6 +39,13 @@ export default function KingBedOverlay({ isHovered, onClick, onMouseEnter, onMou
       </defs>
 
       <rect x="291" y="175" width="106" height="96" fill="transparent" clipPath="url(#king-bed-clip)" />
+
+      {materialColor && (
+        <rect x="291" y="175" width="106" height="96"
+          fill={materialColor} fillOpacity={0.55}
+          clipPath="url(#king-bed-clip)"
+          style={{ mixBlendMode: 'multiply' }} />
+      )}
 
       {isHovered && (
         <rect x="291" y="175" width="106" height="96"

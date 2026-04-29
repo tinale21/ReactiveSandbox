@@ -13,7 +13,7 @@ export default function App() {
   const [viewMode, setViewMode] = useState(null)        // null | 'rendered'
   const [selectedFloor, setSelectedFloor] = useState(null)
   const [selectedObject, setSelectedObject] = useState(null)
-  const [selectedMaterial, setSelectedMaterial] = useState('beige')
+  const [selectedMaterial, setSelectedMaterial] = useState(null)
   const [leftCollapsed, setLeftCollapsed] = useState(false)
   const [rightCollapsed, setRightCollapsed] = useState(false)
   const [showBlueprintModal, setShowBlueprintModal] = useState(false)
@@ -26,19 +26,19 @@ export default function App() {
     setViewMode(null)
     setSelectedFloor(null)
     setSelectedObject(null)
-    setSelectedMaterial('beige')
+    setSelectedMaterial(null)
     setIsFavorited(false)
   }
 
   function handleSelectFloor(floorId) {
     setSelectedFloor(floorId)
     setSelectedObject(null)
-    setSelectedMaterial('beige')
+    setSelectedMaterial(null)
   }
 
   function handleSelectObject(objectId) {
     setSelectedObject(objectId)
-    setSelectedMaterial('beige')
+    setSelectedMaterial(null)
     setRightCollapsed(false)
   }
 
@@ -97,6 +97,7 @@ export default function App() {
         onToggleCollapse={() => setRightCollapsed(v => !v)}
         selectedObject={selectedObjectData}
         selectedMaterial={selectedMaterial}
+        onSelectMaterial={handleSelectMaterial}
       />
 
       {showBlueprintModal && (

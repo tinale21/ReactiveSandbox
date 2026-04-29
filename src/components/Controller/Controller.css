@@ -105,3 +105,48 @@
 .controller-empty {
   flex: 1;
 }
+
+/* ── Materials ── */
+.material-section {
+  margin-top: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.material-label {
+  font-size: 16px;
+  color: var(--color-text);
+}
+
+.material-swatches {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.material-swatch {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: 2px solid transparent;
+  cursor: pointer;
+  padding: 0;
+  transition: border-color 0.15s, transform 0.15s;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.2);
+}
+
+.material-swatch:hover {
+  transform: scale(1.1);
+}
+
+.material-swatch--active {
+  border-color: var(--color-text);
+  transform: scale(1.1);
+}
+
+.material-selected-label {
+  font-size: 13px;
+  color: var(--color-text-muted);
+  letter-spacing: 0.02em;
+}
