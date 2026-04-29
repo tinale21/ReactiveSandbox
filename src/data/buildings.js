@@ -48,10 +48,10 @@ export const buildings = [
           overlayType: 'sofa',
           preview: 'assets/objects/sofa-sectional-beige.png',
           materials: [
-            { id: 'silk',    label: 'Silk',    swatchColor: '#EDE8E0', blendColor: '#EDE8E0' },
-            { id: 'linen',   label: 'Linen',   swatchColor: '#D4B896', blendColor: '#D4B896' },
-            { id: 'leather', label: 'Leather', swatchColor: '#8B5A35', blendColor: '#8B5A35' },
-            { id: 'cotton',  label: 'Cotton',  swatchColor: '#F2EFEA', blendColor: '#F2EFEA' },
+            { id: 'silk',    label: 'Silk',    swatchColor: '#EDE8E0', blendColor: '#EDE8E0', preview: 'assets/objects/sofa-silk.png' },
+            { id: 'linen',   label: 'Linen',   swatchColor: '#D4B896', blendColor: '#D4B896', preview: 'assets/objects/sofa-linen.png' },
+            { id: 'leather', label: 'Leather', swatchColor: '#8B5A35', blendColor: '#8B5A35', preview: 'assets/objects/sofa-leather.png' },
+            { id: 'cotton',  label: 'Cotton',  swatchColor: '#F2EFEA', blendColor: '#F2EFEA', preview: 'assets/objects/sofa-cotton.png' },
           ],
         },
         {

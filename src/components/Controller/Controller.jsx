@@ -24,7 +24,11 @@ export default function Controller({
               <div className="object-panel" style={selectedObject.panelOffset ? { marginTop: selectedObject.panelOffset } : undefined}>
                 <div className="object-preview">
                   <img
-                    src={asset(selectedObject.preview)}
+                    src={asset(
+                      selectedMaterial
+                        ? (selectedObject.materials?.find(m => m.id === selectedMaterial)?.preview ?? selectedObject.preview)
+                        : selectedObject.preview
+                    )}
                     alt={selectedObject.name}
                     style={selectedObject.previewScale ? { transform: `scale(${selectedObject.previewScale})` } : undefined}
                   />
