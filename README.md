@@ -176,6 +176,9 @@ Runs at `http://localhost:5173/ReactiveSandbox/`
 | 8 | 2026-04-27 | Add lounge chairs and stairs | LoungeChair1/2Overlay and StairsOverlay, all 100% path-matched | Kept as-is |
 | 9 | 2026-04-27 | Redo the twin bedroom closet with an updated SVG | Replaced TwinClosetOverlay with new file (52/53 paths matched), updated hitArea to match new position | Kept as-is |
 | 10 | 2026-04-27 | Fine-tune right-side panel content positions (panelOffset, previewScale, dimsOffset) across many objects | Iterative numeric adjustments per object | Directed all values through multiple rounds of iteration |
+| 11 | 2026-04-29 | Add a material swatch feature to the sofa and king bed with silk, linen, leather, and cotton options | Blend overlay approach: a multiply-blended colored rect clipped to each object's shape appears over the floor plan when a material is selected; swatches rendered as circular buttons in the right panel | Kept the approach; directed the specific materials and colors |
+| 12 | 2026-04-29 | Attempt the same material feature for the twin beds | Direct fill replacement on the white SVG paths using the selected material color | Rejected — the fill replacement did not apply correctly on the twin bed SVGs; reverted both overlays and removed materials from their data |
+| 13 | 2026-04-29 | Add the material swatch feature to the red couches | Same multiply-blend clip approach as sofa and king bed, applied to RedCouch1Overlay and RedCouch2Overlay | Kept as-is |
 
 ---
 
@@ -232,6 +235,11 @@ _Moments where I rejected or reverted AI output._
     - **What AI produced:** Set the deck chair panel image scale to 0.85 as directed.
     - **Why rejected:** After seeing it, 0.85 was still slightly too large in the panel.
     - **What I did instead:** Changed it to 0.8 on review.
+
+11. **2026-04-29 — Twin bed material fill replacement rejected.**
+    - **What AI produced:** A direct fill replacement approach for the twin beds — swapping the `#FFFFFE` fill values in the SVG paths with the selected material color.
+    - **Why rejected:** The material color did not apply correctly to the twin bed SVGs; the visual result didn't reflect the intended material change.
+    - **What I did instead:** Asked AI to revert both twin bed overlays to their original static fills and remove materials from their data entries entirely.
 
 ---
 
