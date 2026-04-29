@@ -12,7 +12,7 @@ An interior design explorer built as a three-panel reactive system. Users select
 **Architecture:** Browser → Detail View → Controller  
 **Stack:** React 18 + Vite, hosted on GitHub Pages via GitHub Actions
 
-**Live URL:** https://tinale225.github.io/ReactiveSandbox/
+**Live URL:** https://tinale21.github.io/ReactiveSandbox/
 
 ---
 
