@@ -12,6 +12,8 @@ An interior design explorer built as a three-panel reactive system. Users select
 **Architecture:** Browser → Detail View → Controller  
 **Stack:** React 18 + Vite, hosted on GitHub Pages via GitHub Actions
 
+**Live URL:** https://tinale225.github.io/ReactiveSandbox/
+
 ---
 
 ## Design Intent
@@ -149,16 +151,6 @@ stateDiagram-v2
 
 ---
 
-## Panels
-
-| Panel | Role |
-|-------|------|
-| **Browser** | Browse and select buildings, filter by type |
-| **Detail View** | View selected building (render + blueprint), click objects |
-| **Controller** | Inspect selected object — measurements and material controls |
-
----
-
 ## Local Development
 
 ```bash
@@ -167,18 +159,6 @@ npm run dev
 ```
 
 Runs at `http://localhost:5173/ReactiveSandbox/`
-
----
-
-## Deployment
-
-Pushes to `main` automatically build and deploy to GitHub Pages via `.github/workflows/deploy.yml`.
-
----
-
-## Project Documentation
-
-Assignment docs and course reference are in `claude/docs/`.
 
 ---
 
