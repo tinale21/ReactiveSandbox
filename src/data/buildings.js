@@ -4,10 +4,7 @@ export const buildings = [
     name: '4380 Parsons Drive',
     exteriorImage: 'assets/exterior.png',
     floors: [
-      { id: 'lower', label: 'Lower Level' },
       { id: 'ground', label: 'Ground Floor' },
-      { id: 'upper', label: 'Upper Floor' },
-      { id: 'loft', label: 'Loft' },
     ],
     groundFloor: {
       floorPlan: 'assets/floorplan-ground.svg',

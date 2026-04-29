@@ -48,7 +48,6 @@ export default function App() {
 
   function handleRenderedFloorPlan() {
     setViewMode('rendered')
-    setSelectedFloor('ground')
   }
 
   const appClasses = [
