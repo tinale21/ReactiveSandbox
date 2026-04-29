@@ -153,17 +153,6 @@ stateDiagram-v2
 
 ---
 
-## Local Development
-
-```bash
-npm install
-npm run dev
-```
-
-Runs at `http://localhost:5173/ReactiveSandbox/`
-
----
-
 ## AI Direction Log
 
 | # | Date | What I asked | What AI produced | What I changed / kept / rejected |
