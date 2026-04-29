@@ -127,25 +127,27 @@ stateDiagram-v2
     [*] --> Idle : app loads
 
     state Browser {
-        Idle --> BuildingSelected : user selects building
-        BuildingSelected --> BuildingSelected : user selects different building
+        Idle --> BuildingSelected : select building
+        BuildingSelected --> BuildingSelected : select different building
     }
 
     state DetailView {
-        BuildingSelected --> RenderView : click Rendered
-        BuildingSelected --> BlueprintView : click Blueprint
-        RenderView --> BlueprintView : toggle view
-        BlueprintView --> RenderView : toggle view
-        BlueprintView --> ObjectSelected : click floor plan object
+        BuildingSelected --> RenderedView : click Rendered Floor Plan
+        BuildingSelected --> BlueprintModal : click Blueprint
+        BlueprintModal --> BuildingSelected : close modal
+        RenderedView --> FloorPlanVisible : click Ground Floor
+        FloorPlanVisible --> ObjectSelected : click object
         ObjectSelected --> ObjectSelected : click different object
-        ObjectSelected --> BlueprintView : click outside object
+        ObjectSelected --> FloorPlanVisible : deselect object
     }
 
     state Controller {
         ObjectSelected --> PanelVisible : object selected
+        PanelVisible --> MaterialSelected : click material swatch
+        MaterialSelected --> MaterialSelected : click different swatch
         PanelVisible --> PanelCollapsed : collapse panel
         PanelCollapsed --> PanelVisible : expand panel
-        PanelVisible --> PanelHidden : no object selected
+        PanelVisible --> PanelHidden : object deselected
     }
 ```
 
@@ -179,6 +181,8 @@ Runs at `http://localhost:5173/ReactiveSandbox/`
 | 11 | 2026-04-29 | Add a material swatch feature to the sofa and king bed with silk, linen, leather, and cotton options | Blend overlay approach: a multiply-blended colored rect clipped to each object's shape appears over the floor plan when a material is selected; swatches rendered as circular buttons in the right panel | Kept the approach; directed the specific materials and colors |
 | 12 | 2026-04-29 | Attempt the same material feature for the twin beds | Direct fill replacement on the white SVG paths using the selected material color | Rejected — the fill replacement did not apply correctly on the twin bed SVGs; reverted both overlays and removed materials from their data |
 | 13 | 2026-04-29 | Add the material swatch feature to the red couches | Same multiply-blend clip approach as sofa and king bed, applied to RedCouch1Overlay and RedCouch2Overlay | Kept as-is |
+| 14 | 2026-04-29 | Add per-material preview images to the sofa, red couches, and king bed so the right panel image swaps when a material is selected | Added a `preview` field per material in buildings.js; Controller reads the active material's preview and falls back to the default when none is selected; per-material `previewScale` supported independently of the object-level scale | Kept the approach; directed scale values per material through multiple rounds |
+| 15 | 2026-04-29 | Simplify floor navigation to only show Ground Floor, and require the user to click it before the floor plan appears | Removed Lower Level, Upper Floor, and Loft from the floors array; removed the auto-select of ground floor from handleRenderedFloorPlan so clicking Rendered Floor Plan shows the button without loading the plan | Kept as-is |
 
 ---
 
@@ -240,6 +244,16 @@ _Moments where I rejected or reverted AI output._
     - **What AI produced:** A direct fill replacement approach for the twin beds — swapping the `#FFFFFE` fill values in the SVG paths with the selected material color.
     - **Why rejected:** The material color did not apply correctly to the twin bed SVGs; the visual result didn't reflect the intended material change.
     - **What I did instead:** Asked AI to revert both twin bed overlays to their original static fills and remove materials from their data entries entirely.
+
+12. **2026-04-29 — Sofa material preview scale iteration.**
+    - **What AI produced:** Set the sofa material preview scale to 0.9, then 0.95 after being asked to adjust.
+    - **Why rejected:** 0.9 was too small; after reviewing 0.95 I decided cotton specifically looked better at full size.
+    - **What I did instead:** Directed silk, linen, and leather to stay at 0.95 and set cotton to 1.0 independently.
+
+13. **2026-04-29 — King bed material previews overwritten with armchair images.**
+    - **What AI produced:** When adding preview paths to the red couch materials using `replace_all`, it accidentally replaced the king bed's material preview paths with armchair image paths too, since both entries shared the same materials structure.
+    - **Why rejected:** The king bed panel would have shown armchair images instead of bed images when a material was selected.
+    - **What I did instead:** Caught the error and directed AI to fix the king bed materials to use the correct `king-bed-*.png` paths.
 
 ---
 
